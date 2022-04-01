@@ -1,0 +1,30 @@
+POST localhost:3000/carros
+Content-Type: application/json
+
+{
+  "placa": "ABC1234",
+  "renavam": 12921,
+  "marca": "Tesla",
+  "modelo": "Golf GTI"
+}
+
+###
+POST localhost:3000/carros
+Content-Type: application/json
+
+{
+  "placa": "AQB9036",
+  "renavam": 999112,
+  "marca": "Fiat",
+  "modelo": "Freemont"
+}
+
+###
+
+GET localhost:3000/carros
+
+###
+GET localhost:3000/carros/BBB1509
+
+###
+GET localhost:3000/carros/ABC

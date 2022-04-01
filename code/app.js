@@ -1,28 +1,21 @@
 const express = require('express');
+const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const bodyParser = require('body-parser');
+const indexRouter = require('./routes');
+const carroRouter = require('./routes/carros');
 
 const app = express();
-const database = require('./model/db');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
-(async () => {
-    try {
-        const result = await database.sync();
-        console.log(result);
-    } catch (err) {
-        console.log(err);
-    }
-})();
-
-app.use('/api', indexRouter);
-indexRouter.use('/users', usersRouter);
+app.use('/', indexRouter);
+app.use('/carros', carroRouter);
 
 module.exports = app;

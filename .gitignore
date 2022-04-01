@@ -1,3 +1,4 @@
 .idea/
 node_modules/
-_dev/
+package-lock.json
+npm-shrinkwrap.json
